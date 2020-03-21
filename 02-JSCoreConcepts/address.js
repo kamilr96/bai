@@ -13,3 +13,9 @@ ul. Długa 15
 30-781 Kraków
 POLAND
 */
+
+let adrespierwszy = title + ' ' + name + ' '+ surname + "\n" + 'ul. ' + street +"\n" + zip + ' ' + city + "\n" + country.toUpperCase();
+console.log(adrespierwszy);
+
+let adresdrugi =`${title} ${name} ${surname}\n ul. ${street}\n ${zip} ${city}\n ${country.toUpperCase()}`;
+console.log(adresdrugi);
