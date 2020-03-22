@@ -25,7 +25,7 @@
 		<script>
 			text = document.getElementsByTagName("textarea")[0]
 			text.oninput = function() {
-				function ResultsWords() {
+				function FastFingers() {
 					var textValue = text.value
 					var chars = textValue.length
 					var words = textValue.match(/\S+/g).length;
@@ -36,7 +36,7 @@
 					p.appendChild(textNode)
 					document.body.appendChild(p)
 				}
-				window.setTimeout(ResultsWords, 30000);
+				window.setTimeout(FastFingers, 30000);
 			}
 			
 		</script>
