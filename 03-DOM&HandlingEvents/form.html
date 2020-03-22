@@ -7,19 +7,24 @@
 </head>
 
 <body>
-	<h1>Filling in a form</h1>
-	<form>
-		<p>University:<br><input type="text"></p>
-		<p>Address:<br><input type="text"></p>
-		<button type="button">Hint</button>
-	</form>
+<h1>Filling in a form</h1>
+<form>
+	<p>University:<br><input id='university' type="text"></p>
+	<p>Address:<br><input id='address' type="text"></p>
+	<button type="button" onclick="Inputs();">Hint</button>
+</form>
 
-	<script>
-		// a JavaScript code here ...
-		var university = "Cracow University of Economics";
-		var address = "Rakowicka 27, Krakow, POLAND";
+<script>
+	 university = "Cracow University of Economics";
+	 address = "Rakowicka 27, Krakow, POLAND";
+	function Inputs()
+	{
+		document.getElementById('university').value = university;
+		document.getElementById('address').value = address;
+	}
 
-	</script>
+
+</script>
 </body>
 
 </html>
