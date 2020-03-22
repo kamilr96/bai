@@ -19,26 +19,24 @@
 		Czarne chorągwie na śmierć prowadzą zastępy.<br>
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
-		
+
 		<textarea rows="15" cols="50"></textarea><br>
-		
+
 		<script>
 			text = document.getElementsByTagName("textarea")[0]
 			text.oninput = function() {
-				window.setTimeout(ResultsWords, 30000);
 				function ResultsWords() {
 					var textValue = text.value
 					var chars = textValue.length
-					var words = document.createTextNode(`Typed letters: ${textValue.value.length} and words: ${words}`);
+					var words = textValue.match(/\S+/g).length;
 
 					var p = document.createElement("p")
-					var textNode = document.createTextNode("Wprowadzono" + chars
-							+ " litery " + words + " słowo.")
+					var textNode = document.createTextNode("Wprowadzono " + chars + " litery " + words + " słowo")
 
 					p.appendChild(textNode)
 					document.body.appendChild(p)
 				}
-				{ once: true }
+				window.setTimeout(ResultsWords, 30000);
 			}
 			
 		</script>
