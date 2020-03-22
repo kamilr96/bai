@@ -23,7 +23,23 @@
 		<textarea rows="15" cols="50"></textarea><br>
 		
 		<script>
-			// a JavaScript code here ...
+			text = document.getElementsByTagName("textarea")[0]
+			text.oninput = function() {
+				window.setTimeout(ResultsWords, 30000);
+				function ResultsWords() {
+					var textValue = text.value
+					var chars = textValue.length
+					var words = document.createTextNode(`Typed letters: ${textValue.value.length} and words: ${words}`);
+
+					var p = document.createElement("p")
+					var textNode = document.createTextNode("Wprowadzono" + chars
+							+ " litery " + words + " słowo.")
+
+					p.appendChild(textNode)
+					document.body.appendChild(p)
+				}
+				{ once: true }
+			}
 			
 		</script>
 		
