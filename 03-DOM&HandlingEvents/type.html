@@ -23,22 +23,25 @@
 		<textarea rows="15" cols="50"></textarea><br>
 
 		<script>
-			text = document.getElementsByTagName("textarea")[0]
-			text.oninput = function() {
-				function FastFingers() {
-					var textValue = text.value
-					var chars = textValue.length
-					var words = textValue.match(/\S+/g).length;
+			document.getElementsByTagName("textarea")[0].setAttribute("oninput", "setTimeout(\"fastfingers()\",30000)");
 
-					var p = document.createElement("p")
-					var textNode = document.createTextNode("Wprowadzono " + chars + " litery " + words + " słowo")
+			let check = true;
 
-					p.appendChild(textNode)
-					document.body.appendChild(p)
+			function fastfingers(){
+				if (check){
+					check = false;
+					let textValue = document.getElementsByTagName("textarea")[0].value;
+					let word = textValue.split(" ").length;
+					let chars = textValue.length;
+					let p = document.createElement("p");
+					let body = document.getElementsByTagName("body")[0];
+
+					p.innerHTML = "Liczba znaków: " + chars + '\n' + "Liczba wyrazów: " + word;
+					body.appendChild(p);
 				}
-				window.setTimeout(FastFingers, 30000);
 			}
-			
+
+
 		</script>
 		
 	</body>
