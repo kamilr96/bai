@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gold price chart</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Ceny Złota</h1>
+<canvas id="myChart" width="200" height="200"></canvas>
+<script src='https://code.jquery.com/jquery-3.3.1.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            const response = JSON.parse(this.response);
+            var labels = [];
+            var prices = [];
+            for (let item = 0; item < 10; item++) {
+                labels.push(response[item]['data']);
+                prices.push(response[item]['cena']);
+            }
+            let myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: prices,
+                            label: 'Ceny złota',
+                            backgroundColor: 'rgba(42,255,57,0.2)',
+                            borderWidth: 5,
+                            borderColor: 'rgba(0,0,0,0.2)'
+
+                        }
+                    ]
+                },
+            });
+        }
+    };
+    xhr.open('GET', 'http://api.nbp.pl/api/cenyzlota/last/10/?format=json');
+    xhr.send();
+</script>
+</body>
+</html>
