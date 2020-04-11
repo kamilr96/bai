@@ -4,19 +4,44 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <script>
+<div id="app">
+    <div v-for="item in employees">
+        <h1>PERSONAL DATA EMPLOYEES</h1>
+        <p>Name: {{ item.name }}</p>
+        <p v-if="item.secondname">Second Name: {{ item.secondname }}</p>
+        <p>Last Name: {{ item.lastname }}</p>
+        <p v-if="item.nationality === 'Polish'">Pesel: {{ item.pesel }}</p>
+        <p v-else>Nationality: {{ item.nationality }}</p>
+        <p>Address: {{ item.address }}</p>
+    </div>
+</div>
+
+<script>
     var app = new Vue({
-      el: '#app',
-      data: {
-        name1: 'Adam',
-        name2: 'Jan',
-        surname: 'Majewski',
-        foreigner: false,
-        nationality: 'Polish',
-        pesel: '92021708229',
-        address: 'ul. Szeroka 3, Kraków',
+        el: '#app',
+        data:
+            {
+                employees: [
+                    {
+                        name: 'Adam',
+                        secondname: 'Jan',
+                        lastname: 'Majewski',
+                        foreigner: false,
+                        nationality: 'Polish',
+                        pesel: '92021708229',
+                        address: 'ul. Szeroka 3, Krakow'
+                    },
+                    {
+                        name: 'John',
+                        lastname: 'Brown',
+                        foreigner: true,
+                        nationality: 'USA',
+                        address: 'Holland Drive 4, Chicago'
+                    }
+                ]
+            }
     });
-  </script>
+</script>
 
 </body>
 </html>
