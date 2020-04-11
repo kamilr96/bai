@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Exchange Rates</title>
+</head>
+<body>
+<h1>AKTUALNE KURSY WALUT:</h1>
+<p id="eur"></p>
+<p id="usd"></p>
+<p id="gbp"></p>
+
+
+</body>
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200)
+        {
+            const display = JSON.parse(this.responseText);
+            document.getElementById('eur').innerHTML = `EURO: ${display[0]['rates'][7]['mid']} zł`;
+            document.getElementById('usd').innerHTML = `DOLAR: ${display[0]['rates'][1]['mid']} zł`;
+            document.getElementById('gbp').innerHTML = `FUNT BRYTYJSKI: ${display[0]['rates'][10]['mid']} zł`;
+        }
+    };
+    url = 'http://api.nbp.pl/api/exchangerates/tables/a/?format=json';
+    xhr.open('GET', url);
+    xhr.send();
+    </script>
+</html>
